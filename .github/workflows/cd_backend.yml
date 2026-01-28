@@ -21,8 +21,9 @@ jobs:
                 context: .
                 file: ./docker/dockerFile.backend
                 push: true
-                tags: subhdeep8384/backend:${{ github.sha}}
-                
+                tags: ${{ secrets.DOCKERHUB_USERNAME }}/backend:${{ github.sha }}
+
+
 
             
 
