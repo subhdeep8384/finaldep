@@ -23,7 +23,7 @@ jobs:
                 build-args:
                     - DATABASE_URL=${{ secrets.DATABASE_URL }}
                 push: true
-                tags: ${{ secrets.DOCKERHUB_USERNAME }}/backend:${{ github.sha }}
+                tags: ${{ secrets.DOCKERHUB_USERNAME }}/web:${{ github.sha }}
 
 
 
