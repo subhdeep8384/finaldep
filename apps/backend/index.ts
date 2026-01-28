@@ -1,4 +1,5 @@
-import { prisma } from "db/client";
+
+import { prisma } from "db/client"
 import express from "express";
 
 const app = express();
@@ -10,6 +11,7 @@ app.get("/", async (req, res) => {
     res.send(data)
 })
 app.post("/", async (req, res) => {
+
     const user = await prisma.user.create({
         data: {
             email: req.body.email,
@@ -21,5 +23,5 @@ app.post("/", async (req, res) => {
 })
 
 app.listen(3001, () => {
-    console.log("Server is running on port 3000")
+    console.log("Server is running on port 3001")
 })

@@ -5,6 +5,7 @@
     "": {
       "name": "TurboRepo",
       "devDependencies": {
+        "db": "*",
         "prettier": "^3.7.4",
         "turbo": "^2.7.6",
         "typescript": "5.9.2",

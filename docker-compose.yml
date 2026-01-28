@@ -1,0 +1,52 @@
+version: '3.8'
+
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: docker/dockerFile.backend
+    ports:
+      - "3001:3001"
+    environment:
+      - DATABASE_URL=postgres://postgres:subhdeep@postgres:5432/subhdeep
+
+    depends_on:
+      - postgres
+  frontend:
+    build:
+      context: .
+      dockerfile: docker/dockerFile.web
+      args:
+        - DB_URL=postgres://postgres:subhdeep@postgres:5432/subhdeep
+
+    ports:
+      - "3000:3000"
+    environment:
+      - DATABASE_URL=postgres://postgres:subhdeep@postgres:5432/subhdeep
+
+    depends_on:
+      - postgres
+  ws:
+    build:
+      context: .
+      dockerfile: docker/dockerFile.ws
+    ports:
+      - "3002:3002"
+    environment:
+      - DATABASE_URL=postgres://postgres:subhdeep@postgres:5432/subhdeep
+
+    depends_on:
+      - postgres
+
+  postgres:
+    image: postgres
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=subhdeep
+      - POSTGRES_DB=subhdeep
+    ports:
+      - "5432:5432"
+        
+
+volumes:
+  postgres_data:
